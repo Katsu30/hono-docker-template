@@ -3,12 +3,7 @@ FROM node:22-alpine
 
 WORKDIR /src
 
-COPY package*.json ./
-# pnpmをインストールし、依存関係をインストール
+COPY package*.json pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm install
 
-# アプリケーションのソースコードをコピー
 COPY . .
-
-# アプリケーションを起動するコマンドを指定
-CMD ["pnpm", "dev"]
